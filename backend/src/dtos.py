@@ -15,7 +15,6 @@ class CargoDTO(BaseModel):
     length: int
     width: int
     height: int
-    count: int
     weight: int
 
 

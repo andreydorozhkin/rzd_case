@@ -103,7 +103,7 @@ function sendCargoDataToServer() {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(cargo_list)
+        body: JSON.stringify({'cargo_list': cargo_list})
     })
         .then(response => {
             if (!response.ok) {
@@ -113,7 +113,7 @@ function sendCargoDataToServer() {
         })
         .then(data => {
             console.log('Данные успешно отправлены на сервер', data);
-           alert('Данные успешно отправлены на сервер');
+            alert('Данные успешно отправлены на сервер');
         })
         .catch(error => {
             console.error('Произошла ошибка:', error);
@@ -121,7 +121,7 @@ function sendCargoDataToServer() {
         });
 }
 
-document.getElementById("calculate").addEventListener("click", function() {
+document.getElementById("calculate").addEventListener("click", function () {
     calculateCargo();
     sendCargoDataToServer();
 });

@@ -7,4 +7,4 @@ class GenerationService:
 
     def execute(self, data: CalculatedDataDTO) -> str:
         self._builder(platform=data.platform).build()
-        return "files/test.pdf"
+        return "src/files/test.pdf"

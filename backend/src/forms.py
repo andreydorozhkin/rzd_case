@@ -16,10 +16,9 @@ class CargoForm(BaseModel):
     length: int
     width: int
     height: int
-    count: int
     weight: int
 
 
 class CreatePlatformForm(BaseModel):
-    platform: PlatformForm
+    #platform: PlatformForm
     cargo_list: list[CargoForm]

@@ -8,7 +8,6 @@ class PlatformDTO(BaseModel):
     height: int
     center_of_gravity_height: int
     platform_base: int
-    wheel_radius: int
 
 
 class CargoDTO(BaseModel):
@@ -16,7 +15,6 @@ class CargoDTO(BaseModel):
     length: int
     width: int
     height: int
-    count: int
     weight: int
 
 

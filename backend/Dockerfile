@@ -1,14 +1,11 @@
 # загрузка официального образа
-FROM python:3.10.4
-# установка рабочей директории
-WORKDIR /app
-# установка переменных окржуений
+FROM python:3.11.4-alpine
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
-# установка зависимостей пайтона
 RUN pip install --upgrade pip
-COPY ./requirements.txt .
-RUN pip install -r requirements.txt 
-
-# добавление в контейнер приложения
-COPY . .
+RUN apk add --no-cache --virtual .build-deps gcc libffi-dev musl-dev g++
+RUN pip3 install poetry==1.6.1
+COPY ./pyproject.toml ./poetry.lock ./
+RUN poetry config virtualenvs.create false  \
+    && poetry install
+COPY ./src ./src

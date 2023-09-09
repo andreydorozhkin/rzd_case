@@ -3,24 +3,12 @@ const cargo_list = [];
 let cargoCount = 1;
 
 const formContainer = document.getElementById("formContainer");
-const showFormButton = document.getElementById("showForm");
 const addCargoButton = document.getElementById("addCargo");
-
-function toggleFormVisibility() {
-    const formContainer = document.getElementById("formContainer");
-
-    if (formContainer.style.display === "none" || formContainer.style.display === "") {
-        formContainer.style.display = "block";
-    } else {
-        formContainer.style.display = "none";
-    }
-}
-
-showFormButton.addEventListener("click", toggleFormVisibility);
 
 function addCargoForm() {
     const newCargoForm = document.createElement("div");
-    newCargoForm.classList.add("container-form-group");
+    newCargoForm.setAttribute("data-cargo-id", cargoCount);
+    newCargoForm.classList.add("container-form");
     newCargoForm.innerHTML = `
         <h3 >Груз ${cargoCount}</h3>
         <div class="form-group">
@@ -50,6 +38,14 @@ function addCargoForm() {
 }
 
 addCargoButton.addEventListener("click", addCargoForm);
+
+/*function deleteLastCargo() {
+    const lastCargoForm = document.querySelector(`[data-cargo-id="${cargoCount - 1}"]`);
+
+    if (lastCargoForm) {
+        lastCargoForm.remove();
+    }
+}*/
 
 function calculateCargo() {
     const cargoData = [];
@@ -91,10 +87,7 @@ function calculateCargo() {
             cargoData.push(cargo);
         }
     }
-
     cargo_list.push(...cargoData);
-
-    console.log(cargo_list, 'cargo_list')
 }
 
 function sendCargoDataToServer() {
@@ -121,9 +114,10 @@ function sendCargoDataToServer() {
             a.click();
 
             window.URL.revokeObjectURL(url);
-            console.log('Файл успешно скачан');
-
         })
+        .catch(error => {
+            console.error('Произошла ошибка:', error);
+        });
 }
 
 document.getElementById("calculate").addEventListener("click", function () {

@@ -16,6 +16,7 @@ class CargoDTO(BaseModel):
     width: int
     height: int
     weight: int
+    quantity: int
 
 
 class CoordinateDTO(BaseModel):

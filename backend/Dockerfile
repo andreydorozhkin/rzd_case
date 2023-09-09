@@ -8,5 +8,4 @@ RUN pip3 install poetry==1.6.1
 COPY ./pyproject.toml ./poetry.lock ./
 RUN poetry config virtualenvs.create false  \
     && poetry install
-COPY src .
-RUN poetry install
+COPY ./src ./src

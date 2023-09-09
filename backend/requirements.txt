@@ -1,7 +1,0 @@
-fastapi
-uvicorn[standard]
-environs~=9.5.0
-pydantic
-starlette
-numpy
-numpy-stl

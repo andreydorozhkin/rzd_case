@@ -5,11 +5,13 @@ import uvicorn
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
+from src.routers import v1_router
 from src.settings import settings
 
 app = FastAPI(title=settings.PROJECT_NAME)
 
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True)
+app.include_router(v1_router)
 
 
 def serve() -> NoReturn:

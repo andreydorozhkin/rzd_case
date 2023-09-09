@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Рассчет груза</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <button id="addCargoButton" onclick="showCargoFields()">Добавить груз</button>
-  
-  <div id="cargoFields" style="display: none;">
-    <input type="number" id="length" placeholder="Длина">
-    <input type="number" id="width" placeholder="Ширина">
-    <input type="number" id="height" placeholder="Высота">
-    <input type="number" id="quantity" placeholder="Количество">
-    <input type="text" id="weight" placeholder="Вес">
-    <button onclick="calculate()">Рассчитать</button>
-  </div>
-
-  <script src="script.js"></script>
+<div class="container">
+<div class="container-button">
+  <button id="showForm" class="button">Добавить груз</button>
+  <button id="addCargo" class="button button-round">+</button>
+</div>
+<div id="formContainer" style="display: none;">
+</div>
+  <button id="calculate" class="button">РАССЧИТАТЬ</button>
+</div>
+<script src="script.js"></script>
 </body>
 </html>

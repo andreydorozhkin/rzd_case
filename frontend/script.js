@@ -97,6 +97,32 @@ function calculateCargo() {
     console.log(cargo_list, 'cargo_list')
 }
 
+function sendGetRequest(data) {
+    const queryParams = new URLSearchParams(data);
+
+    const url = `/api/v1/generator/platform?${queryParams.toString()}`;
+
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Ошибка отправки GET-запроса');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Данные успешно получены', data);
+        })
+        .catch(error => {
+            console.error('Произошла ошибка при GET-запросе:', error);
+            alert('Произошла ошибка при GET-запросе');
+        });
+}
+
 function sendCargoDataToServer() {
     fetch('/api/v1/generator/platform', {
         method: 'POST',
@@ -112,8 +138,10 @@ function sendCargoDataToServer() {
             return response.json();
         })
         .then(data => {
+            console.log(data, 'data')
             console.log('Данные успешно отправлены на сервер', data);
            alert('Данные успешно отправлены на сервер');
+            sendGetRequest(data);
         })
         .catch(error => {
             console.error('Произошла ошибка:', error);

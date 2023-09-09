@@ -21,3 +21,10 @@ https://docs.google.com/presentation/d/1GA78EY8Knx7nznW8L4ydVd94qzt8hUuQsbd-AWdU
 
 ## Ссылка на архитектуру решения
 https://excalidraw.com/#room=4e0bb11019a21afe4f85,9fjpkKHFctWsAtTBkCnIWw
+
+## Как запустить проект?
+1. Склонировать проект
+2. Необходимо чтобы был установлен docker (https://docs.docker.com/engine/install/)
+3. Запустить проект командой ``docker compose up``
+4. Сервис будет доступен по адресу http://localhost:80
+5. Документация бекенда (swagger) доступна по адресу http://localhost:80/docs 

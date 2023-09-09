@@ -3,8 +3,6 @@ from src.forms import CreatePlatformForm
 
 
 class TransformerService:
-    def __init__(self):
-        pass
 
     def execute(self, form: CreatePlatformForm) -> TransformedDataDTO:
         return TransformedDataDTO(platform=PlatformDTO(**form.platform.model_dump()),

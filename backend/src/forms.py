@@ -21,5 +21,5 @@ class CargoForm(BaseModel):
 
 
 class CreatePlatformForm(BaseModel):
-    platform: PlatformForm
+    #platform: PlatformForm
     cargo_list: list[CargoForm]

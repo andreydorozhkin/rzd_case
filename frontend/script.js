@@ -97,33 +97,6 @@ function calculateCargo() {
     console.log(cargo_list, 'cargo_list')
 }
 
-function sendGetRequest(data) {
-    const queryParams = new URLSearchParams(data);
-
-    const url = `/api/v1/generator/platform?${queryParams.toString()}`;
-
-    fetch(url, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Ошибка отправки GET-запроса');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Данные успешно получены', data);
-            // Обработайте полученные данные здесь
-        })
-        .catch(error => {
-            console.error('Произошла ошибка при GET-запросе:', error);
-            alert('Произошла ошибка при GET-запросе');
-        });
-}
-
 function sendCargoDataToServer() {
     fetch('/api/v1/generator/platform', {
         method: 'POST',
@@ -136,11 +109,20 @@ function sendCargoDataToServer() {
             if (!response.ok) {
                 throw new Error('Ошибка отправки данных на сервер');
             }
-            return response.json();
+            return response.blob();
         })
-        .then(data => {
-            console.log('Данные успешно отправлены на сервер', data);
-            alert('Данные успешно отправлены на сервер');
+        .then(blobData => {
+            const url = window.URL.createObjectURL(blobData);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'data.pdf';
+            document.body.appendChild(a);
+            a.click();
+
+            window.URL.revokeObjectURL(url);
+            console.log('Файл успешно скачан');
+
         })
 }
 

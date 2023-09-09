@@ -98,13 +98,10 @@ function calculateCargo() {
 }
 
 function sendGetRequest(data) {
-    // Преобразуйте объект data в строку параметров
     const queryParams = new URLSearchParams(data);
 
-    // Задайте URL для GET-запроса, добавив параметры
     const url = `/api/v1/generator/platform?${queryParams.toString()}`;
 
-    // Выполните GET-запрос
     fetch(url, {
         method: 'GET',
         headers: {
@@ -144,12 +141,7 @@ function sendCargoDataToServer() {
         .then(data => {
             console.log('Данные успешно отправлены на сервер', data);
             alert('Данные успешно отправлены на сервер');
-            sendGetRequest(data);
         })
-        .catch(error => {
-            console.error('Произошла ошибка:', error);
-            alert('Произошла ошибка');
-        });
 }
 
 document.getElementById("calculate").addEventListener("click", function () {

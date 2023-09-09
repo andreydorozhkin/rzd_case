@@ -88,6 +88,7 @@ function calculateCargo() {
         }
     }
     cargo_list.push(...cargoData);
+    console.log(cargo_list,  'cargo_list')
 }
 
 function sendCargoDataToServer() {
@@ -122,5 +123,7 @@ function sendCargoDataToServer() {
 
 document.getElementById("calculate").addEventListener("click", function () {
     calculateCargo();
-    sendCargoDataToServer();
+    if(cargo_list.length !== 0) {
+        sendCargoDataToServer();
+    }
 });

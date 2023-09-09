@@ -63,7 +63,6 @@ function calculateCargo() {
             return;
         } else {
             document.getElementById("calculate").addEventListener("click", function () {
-                calculateCargo();
                 sendCargoDataToServer();
             });
         }

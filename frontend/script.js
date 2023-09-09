@@ -94,7 +94,6 @@ function calculateCargo() {
 
     cargo_list.push(...cargoData);
 
-    document.getElementById("results").innerHTML = JSON.stringify(forms, null, 2);
     console.log(cargo_list, 'cargo_list')
 }
 

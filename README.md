@@ -9,11 +9,11 @@
 ## Cтек технологий
 Стек решения: Python, FastAPI, NumPy-STL, JavaScript, Vue.js
 
-![JavaScript](https://github.com/andreydorozhkin/rzd_case/blob/main/js.png?raw=true)
-![Vue.js](https://github.com/andreydorozhkin/rzd_case/blob/main/vue.png?raw=true)
-![Python](https://github.com/andreydorozhkin/rzd_case/blob/main/python.png?raw=true)
-![NumPy](https://github.com/andreydorozhkin/rzd_case/blob/main/numpy.png?raw=true)
-![FastApi](https://github.com/andreydorozhkin/rzd_case/blob/main/fastapi.svg?raw=true)
+![JavaScript](https://github.com/andreydorozhkin/rzd_case/raw/main/docs/logos/js.png?raw=true)
+![Vue.js](https://github.com/andreydorozhkin/rzd_case/raw/main/docs/logos/vue.png?raw=true)
+![Python](https://github.com/andreydorozhkin/rzd_case/raw/main/docs/logos/python.png?raw=true)
+![NumPy](https://github.com/andreydorozhkin/rzd_case/raw/main/docs/logos/numpy.png?raw=true)
+![FastApi](https://github.com/andreydorozhkin/rzd_case/blob/main/docs/logos/fastapi.svg?raw=true)
 
 ## Ссылка на презентацию
 

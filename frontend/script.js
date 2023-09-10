@@ -1,5 +1,6 @@
 const cargo_list = [];
 
+let formSubmitted = false;
 let cargoCount = 1;
 
 const formContainer = document.getElementById("formContainer");
@@ -48,6 +49,10 @@ addCargoButton.addEventListener("click", addCargoForm);
 }*/
 
 function calculateCargo() {
+    if (formSubmitted) {
+        return;
+    }
+
     const cargoData = [];
 
     for (let i = 1; i < cargoCount; i++) {
@@ -93,6 +98,7 @@ function calculateCargo() {
     }
     cargo_list.push(...cargoData);
     console.log(cargo_list,  'cargo_list')
+    formSubmitted = true;
 }
 
 function sendCargoDataToServer() {
@@ -119,6 +125,8 @@ function sendCargoDataToServer() {
             a.click();
 
             window.URL.revokeObjectURL(url);
+
+            formSubmitted = false;
         })
         .catch(error => {
             console.error('Произошла ошибка:', error);

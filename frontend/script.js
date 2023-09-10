@@ -62,9 +62,7 @@ function calculateCargo() {
             alert(`Пожалуйста, заполните все поля для Груза ${i} корректно.`);
             return;
         } else {
-            document.getElementById("calculate").addEventListener("click", function () {
-                sendCargoDataToServer();
-            });
+            document.getElementById("calculate").addEventListener("click", sendCargoDataToServer);
         }
 
         const cargo = {

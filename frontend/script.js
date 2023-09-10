@@ -1,6 +1,5 @@
 const cargo_list = [];
 
-let formSubmitted = false;
 let cargoCount = 1;
 
 const formContainer = document.getElementById("formContainer");
@@ -49,10 +48,6 @@ addCargoButton.addEventListener("click", addCargoForm);
 }*/
 
 function calculateCargo() {
-    if (formSubmitted) {
-        return;
-    }
-
     const cargoData = [];
 
     for (let i = 1; i < cargoCount; i++) {
@@ -67,44 +62,40 @@ function calculateCargo() {
             alert(`Пожалуйста, заполните все поля для Груза ${i} корректно.`);
             return;
         } else {
-            const cargo = {
-                name,
-                length,
-                width,
-                height,
-                quantity,
-                weight
-            };
-
-            const isDuplicate = cargo_list.some(existingCargo => {
-                return (
-                    existingCargo.name === cargo.name &&
-                    existingCargo.length === cargo.length &&
-                    existingCargo.width === cargo.width &&
-                    existingCargo.height === cargo.height &&
-                    existingCargo.quantity === cargo.quantity &&
-                    existingCargo.weight === cargo.weight
-                );
-            });
-
-            if (!isDuplicate) {
-                cargoData.push(cargo);
-            }
-            cargo_list.push(...cargoData);
-            console.log(cargo_list,  'cargo_list')
-
             document.getElementById("calculate").addEventListener("click", function () {
                 sendCargoDataToServer();
             });
+        }
 
-            formSubmitted = true;
+        const cargo = {
+            name,
+            length,
+            width,
+            height,
+            quantity,
+            weight
+        };
+
+        const isDuplicate = cargo_list.some(existingCargo => {
+            return (
+                existingCargo.name === cargo.name &&
+                existingCargo.length === cargo.length &&
+                existingCargo.width === cargo.width &&
+                existingCargo.height === cargo.height &&
+                existingCargo.quantity === cargo.quantity &&
+                existingCargo.weight === cargo.weight
+            );
+        });
+
+        if (!isDuplicate) {
+            cargoData.push(cargo);
         }
     }
+    cargo_list.push(...cargoData);
+    console.log(cargo_list,  'cargo_list')
 }
 
 function sendCargoDataToServer() {
-    formSubmitted = false;
-
     fetch('/api/v1/generator/platform', {
         method: 'POST',
         headers: {

@@ -67,41 +67,44 @@ function calculateCargo() {
             alert(`Пожалуйста, заполните все поля для Груза ${i} корректно.`);
             return;
         } else {
+            const cargo = {
+                name,
+                length,
+                width,
+                height,
+                quantity,
+                weight
+            };
+
+            const isDuplicate = cargo_list.some(existingCargo => {
+                return (
+                    existingCargo.name === cargo.name &&
+                    existingCargo.length === cargo.length &&
+                    existingCargo.width === cargo.width &&
+                    existingCargo.height === cargo.height &&
+                    existingCargo.quantity === cargo.quantity &&
+                    existingCargo.weight === cargo.weight
+                );
+            });
+
+            if (!isDuplicate) {
+                cargoData.push(cargo);
+            }
+            cargo_list.push(...cargoData);
+            console.log(cargo_list,  'cargo_list')
+
             document.getElementById("calculate").addEventListener("click", function () {
                 sendCargoDataToServer();
             });
-        }
 
-        const cargo = {
-            name,
-            length,
-            width,
-            height,
-            quantity,
-            weight
-        };
-
-        const isDuplicate = cargo_list.some(existingCargo => {
-            return (
-                existingCargo.name === cargo.name &&
-                existingCargo.length === cargo.length &&
-                existingCargo.width === cargo.width &&
-                existingCargo.height === cargo.height &&
-                existingCargo.quantity === cargo.quantity &&
-                existingCargo.weight === cargo.weight
-            );
-        });
-
-        if (!isDuplicate) {
-            cargoData.push(cargo);
+            formSubmitted = true;
         }
     }
-    cargo_list.push(...cargoData);
-    console.log(cargo_list,  'cargo_list')
-    formSubmitted = true;
 }
 
 function sendCargoDataToServer() {
+    formSubmitted = false;
+
     fetch('/api/v1/generator/platform', {
         method: 'POST',
         headers: {
@@ -125,8 +128,6 @@ function sendCargoDataToServer() {
             a.click();
 
             window.URL.revokeObjectURL(url);
-
-            formSubmitted = false;
         })
         .catch(error => {
             console.error('Произошла ошибка:', error);

@@ -61,8 +61,6 @@ function calculateCargo() {
         if (isNaN(length) || isNaN(width) || isNaN(height) || isNaN(quantity) || isNaN(weight)) {
             alert(`Пожалуйста, заполните все поля для Груза ${i} корректно.`);
             return;
-        } else {
-            document.getElementById("calculate").addEventListener("click", sendCargoDataToServer);
         }
 
         const cargo = {
@@ -123,4 +121,9 @@ function sendCargoDataToServer() {
         });
 }
 
-document.getElementById("calculate").addEventListener("click", calculateCargo);
+document.getElementById("calculate").addEventListener("click", function () {
+    calculateCargo();
+    if(cargo_list.length !== 0) {
+        sendCargoDataToServer();
+    }
+});

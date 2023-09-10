@@ -13,12 +13,6 @@ https://docs.google.com/presentation/d/1GA78EY8Knx7nznW8L4ydVd94qzt8hUuQsbd-AWdU
 ## Cтек технологий
 Стек решения: Python, FastAPI, NumPy-STL, JavaScript, Vue.js
 
-![JavaScript](https://github.com/andreydorozhkin/rzd_case/raw/main/docs/logos/js.png?raw=true)
-![Vue.js](https://github.com/andreydorozhkin/rzd_case/raw/main/docs/logos/vue.png?raw=true)
-![Python](https://github.com/andreydorozhkin/rzd_case/raw/main/docs/logos/python.png?raw=true)
-![NumPy](https://github.com/andreydorozhkin/rzd_case/raw/main/docs/logos/numpy.png?raw=true)
-![FastApi](https://github.com/andreydorozhkin/rzd_case/blob/main/docs/logos/fastapi.svg?raw=true)
-
 ## Ссылка на архитектуру решения
 https://excalidraw.com/#room=4e0bb11019a21afe4f85,9fjpkKHFctWsAtTBkCnIWw
 
